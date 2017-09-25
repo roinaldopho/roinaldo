@@ -21,7 +21,8 @@ LOOP:
 	DEC DL
 	MOV	AL,[DL]
 	MOV	[BL], AL
-JMP LOOP	
+	CMP	AL,0D
+JNZ LOOP	
 END
 ; --------------------------------------------------------------
 TASK
@@ -38,4 +39,3 @@ TASK
 14)	Difficult  Type in text and store it.  When Enter is pressed, 
 	display it on the VDU screen in reverse order.  Using the stack 
 	makes this task easier.
-
