@@ -1,34 +1,21 @@
 ; ===== Counting ===================================
 
-	MOV 	AL,0
-	MOV 	BL,1
-	MOV 	CL,1
-	MOV 	DL,2
-	
-	MOV	[A0], AL
-	MOV	[A1], BL
-	MOV	[A2], CL	
-	MOV	[A3], DL
+	MOV	AL, 0
+	MOV 	BL, 1
+	MOV 	CL, A0
 
-	ADD	CL, DL
-	MOV	[A4], CL ; CL = 3
-	ADD	DL, CL
-	MOV	[A5], DL ; DL = 5
-	ADD	CL, DL	 
-	MOV	[A6], CL ; CL = 8
-	ADD	DL, CL
-	MOV	[A7], DL ; DL = 13
-	ADD	CL, DL
-	MOV	[A8], CL ; CL = 21
-	ADD	DL, CL
-	MOV	[A9], DL ; DL = 34
-	ADD	CL, DL
-	MOV	[AA], CL ; CL = 55
-	ADD	DL, CL
-	MOV	[AB], DL ; DL = 89
-	ADD	CL, DL
-	MOV	[AC], CL ; CL = OVERFLOW
-	
+	MOV	[CL], AL
+	INC	CL
+	MOV	[CL], BL
+LOOP:
+	INC	CL
+	ADD	AL, BL
+	MOV	[CL], AL
+	ADD	BL, AL
+	INC	CL
+	MOV	[CL], BL
+
+JMP LOOP
 
 	END		; Program Ends
 ; ===== Program Ends ===============================
