@@ -1,6 +1,6 @@
 ; ===== WORK OUT 2 PLUS 2 ======================================
 	CLO		; Close unwanted windows.
-	MOV AL,1000	; Copy a 2 into the AL register.
+	MOV AL,10	; Copy a 2 into the AL register.
 	MOV BL,4	; Copy a 2 into the BL register.
 	MOV CL,A
 	MOV DL,0
