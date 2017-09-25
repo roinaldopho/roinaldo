@@ -2,20 +2,26 @@
 ;  Input key presses from the keyboard until Enter is pressed.
 ; --------------------------------------------------------------
 	CLO		; Close unwanted windows.
+	MOV 	BL, C0
+	MOV	DL, BF
 Rep:
 	IN	00	; Wait for key press - Store it in AL.
 	PUSH AL
-	CMP	AL,72	; Was it the R key? (ASCII 72)
-	JNZ	Rep
-	MOV	AL,[BF]
-	MOV	[C0], AL
-	POP AL
-	MOV	[C2], AL
-	PUSH AL
-	MOV	AL,[BE]
-	MOV	[C1], AL
-	
-	
+	CMP	AL,0D	; Was it the Enter key? (ASCII 0D)
+
+JNZ Rep
+LOOP:
+	MOV	AL,[DL]
+	MOV	[BL], AL
+	INC BL
+	DEC DL
+	MOV	AL,[DL]
+	MOV	[BL], AL
+	INC BL
+	DEC DL
+	MOV	AL,[DL]
+	MOV	[BL], AL
+JMP LOOP	
 END
 ; --------------------------------------------------------------
 TASK
